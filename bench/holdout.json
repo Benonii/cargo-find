@@ -1,0 +1,231 @@
+[
+  {
+    "query": "add a contact to a hubspot list",
+    "expected": [
+      "hubspot.addToList"
+    ]
+  },
+  {
+    "query": "remove someone from a hubspot list",
+    "expected": [
+      "hubspot.deleteFromList"
+    ]
+  },
+  {
+    "query": "create a deal in pipedrive",
+    "expected": [
+      "pipedrive.insertRecord",
+      "pipedrive.upsertRecords"
+    ]
+  },
+  {
+    "query": "look up a person in pipedrive",
+    "expected": [
+      "pipedrive.searchRecords",
+      "pipedrive.getRecord",
+      "pipedrive.fetchRecords"
+    ]
+  },
+  {
+    "query": "dm a user on slack",
+    "expected": [
+      "slack.postMessage"
+    ]
+  },
+  {
+    "query": "read the latest messages in a slack channel",
+    "expected": [
+      "slack.getConversationHistory"
+    ]
+  },
+  {
+    "query": "post a message to microsoft teams",
+    "expected": [
+      "microsoftTeams.createChannelMessage",
+      "microsoftTeams.createChatMessage"
+    ]
+  },
+  {
+    "query": "add a prospect to an outreach sequence",
+    "expected": [
+      "outreach.addToSequence"
+    ]
+  },
+  {
+    "query": "put a lead in an instantly campaign",
+    "expected": [
+      "instantlyV2.createLead"
+    ]
+  },
+  {
+    "query": "add a lead to a smartlead campaign",
+    "expected": [
+      "smartlead.addLead"
+    ]
+  },
+  {
+    "query": "pause a lead in smartlead",
+    "expected": [
+      "smartlead.pauseLead"
+    ]
+  },
+  {
+    "query": "get someone's linkedin profile details",
+    "expected": [
+      "linkedin.enrichProfile",
+      "prospeo.enrichLinkedin",
+      "reverseContact.enrichProfileFromLinkedin",
+      "datagma.enrichPerson",
+      "aiArk.enrichPerson",
+      "explorium.enrichProspectLinkedinProfile",
+      "kaspr.enrichLinkedinProfile"
+    ]
+  },
+  {
+    "query": "find people who work at a company",
+    "expected": [
+      "aiArk.searchPeople",
+      "airscale.findPeople",
+      "apolloio.searchPeople",
+      "clay.searchPeople",
+      "FullEnrich.searchPeople",
+      "icypeas.findPeople",
+      "moltsets.searchPeople",
+      "oceanio.searchPeople",
+      "peopleDataLabs.searchPeople",
+      "pipecorn.findPeopleAtCompany",
+      "sumble.findPeople",
+      "surfe.searchPeople",
+      "salesNavigator.searchLeads",
+      "salesNavigator.fetchLeads"
+    ]
+  },
+  {
+    "query": "search companies by industry and employee count",
+    "expected": [
+      "aiArk.searchCompanies",
+      "clay.searchCompanies",
+      "coresignal.searchCompanies",
+      "FullEnrich.searchCompanies",
+      "icypeas.findCompanies",
+      "moltsets.searchCompanies",
+      "oceanio.searchCompanies",
+      "peopleDataLabs.searchCompanies",
+      "salesIntel.searchCompanies",
+      "surfe.searchCompanies",
+      "theirStack.searchCompanies",
+      "zoominfo.searchCompanies",
+      "zoominfoGtm.searchCompanies",
+      "salesNavigator.searchAccounts",
+      "aiArk.fetchCompanies",
+      "FullEnrich.fetchCompanies"
+    ]
+  },
+  {
+    "query": "find companies similar to a domain",
+    "expected": [
+      "aiArk.searchCompanies",
+      "aiArk.fetchCompanies",
+      "aiArk.countCompanies"
+    ]
+  },
+  {
+    "query": "get open job postings at a company",
+    "expected": [
+      "predictLeads.searchJobOpenings",
+      "cargoSignals.listenJobOffers"
+    ]
+  },
+  {
+    "query": "validate a phone number",
+    "expected": [
+      "clearoutPhone.verifyPhone"
+    ]
+  },
+  {
+    "query": "crawl an entire website",
+    "expected": [
+      "firecrawl.crawl",
+      "firecrawl.crawl.extractor"
+    ]
+  },
+  {
+    "query": "list every url on a site",
+    "expected": [
+      "firecrawl.map"
+    ]
+  },
+  {
+    "query": "get google search results for a keyword",
+    "expected": [
+      "serper.search",
+      "firecrawl.search"
+    ]
+  },
+  {
+    "query": "get g2 reviews for a product",
+    "expected": [
+      "g2.enrichProduct",
+      "piloterr.getG2ProductInfo"
+    ]
+  },
+  {
+    "query": "text message a prospect",
+    "expected": [
+      "onesignal.sendSms"
+    ]
+  },
+  {
+    "query": "get my calendly bookings",
+    "expected": [
+      "calendly.fetchEvents"
+    ]
+  },
+  {
+    "query": "read rows from a google sheet",
+    "expected": [
+      "googleSheets.fetchWorksheet"
+    ]
+  },
+  {
+    "query": "update a row in a spreadsheet",
+    "expected": [
+      "googleSheets.update",
+      "googleSheets.upsert"
+    ]
+  },
+  {
+    "query": "which companies are growing headcount",
+    "expected": [
+      "cargoSignals.listenCompanyGrowth",
+      "cargoSignals.listenForecastedGrowth",
+      "cargoSignals.listenDepartmentGrowth"
+    ]
+  },
+  {
+    "query": "historical headcount by department",
+    "expected": [
+      "companyEnrich.getWorkforce",
+      "cargoSignals.listenDepartmentGrowth"
+    ]
+  },
+  {
+    "query": "send a linkedin message to a connection",
+    "expected": [
+      "linkedin.messageProfile"
+    ]
+  },
+  {
+    "query": "find a linkedin url from a person's name",
+    "expected": [
+      "linkedin.findProfileUrl",
+      "linkedin.enrichProfileFromName"
+    ]
+  },
+  {
+    "query": "get a company's tech stack summary",
+    "expected": [
+      "builtwith.getDomainSummary"
+    ]
+  }
+]

@@ -1,0 +1,703 @@
+{
+  "generatedAt": "2026-11-06T23:47:21.501Z",
+  "cliVersion": "1.0.142",
+  "total": 30,
+  "cargo": {
+    "top1": 5,
+    "top5": 5,
+    "empty": 24
+  },
+  "cargoFind": {
+    "top1": 18,
+    "top5": 27,
+    "empty": 0
+  },
+  "rows": [
+    {
+      "query": "add a contact to a hubspot list",
+      "expected": [
+        "hubspot.addToList"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.addToList",
+          "hubspot.fetchListRecords",
+          "hubspot.deleteFromList",
+          "hubspot.fetchRecords",
+          "hubspot.findRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "remove someone from a hubspot list",
+      "expected": [
+        "hubspot.deleteFromList"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.deleteFromList",
+          "hubspot.addToList",
+          "hubspot.fetchListRecords",
+          "hubspot.fetchRecords",
+          "hubspot.searchRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "create a deal in pipedrive",
+      "expected": [
+        "pipedrive.insertRecord",
+        "pipedrive.upsertRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "pipedrive.insertRecord",
+          "pipedrive.getRecord",
+          "pipedrive.fetchRecords",
+          "pipedrive.deleteRecords",
+          "pipedrive.upsertRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "look up a person in pipedrive",
+      "expected": [
+        "pipedrive.searchRecords",
+        "pipedrive.getRecord",
+        "pipedrive.fetchRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "pipedrive.getRecord",
+          "pipedrive.fetchRecords",
+          "pipedrive.searchRecords",
+          "pipedrive.insertRecord",
+          "pipedrive.upsertRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "dm a user on slack",
+      "expected": [
+        "slack.postMessage"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "slack.postMessage",
+          "slack.searchMessages",
+          "slack.listUsers",
+          "x.getUserPosts",
+          "x.fetchUserPosts"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "read the latest messages in a slack channel",
+      "expected": [
+        "slack.getConversationHistory"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "slack.postMessage",
+          "slack.searchMessages",
+          "slack.listChannels",
+          "slack.getConversationHistory",
+          "slack.getThread"
+        ],
+        "rank": 4,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "post a message to microsoft teams",
+      "expected": [
+        "microsoftTeams.createChannelMessage",
+        "microsoftTeams.createChatMessage"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "microsoftTeams.createChannelMessage",
+          "microsoftTeams.createChatMessage",
+          "linkedin.fetchPosts",
+          "linkedin.searchPosts",
+          "xAccount.sendMessage"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "add a prospect to an outreach sequence",
+      "expected": [
+        "outreach.addToSequence"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "outreach.addToSequence",
+          "outreach.insertRecord",
+          "outreach.associateProspectToOpportunity",
+          "outreach.fetchProspects",
+          "outreach.associateProspectToAccount"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "put a lead in an instantly campaign",
+      "expected": [
+        "instantlyV2.createLead"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "instantlyV2.createLead",
+          "instantlyV2.searchLeads",
+          "instantlyV2.updateLead",
+          "instantlyV2.deleteLead",
+          "instantlyV2.fetchLeads"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "add a lead to a smartlead campaign",
+      "expected": [
+        "smartlead.addLead"
+      ],
+      "cargo": {
+        "results": [
+          "smartlead.addLead"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "smartlead.addLead",
+          "smartlead.removeLead",
+          "smartlead.pauseLead",
+          "smartlead.resumeLead",
+          "heyReach.addLeadToCampaign"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "pause a lead in smartlead",
+      "expected": [
+        "smartlead.pauseLead"
+      ],
+      "cargo": {
+        "results": [
+          "smartlead.pauseLead"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "smartlead.pauseLead",
+          "smartlead.removeLead",
+          "smartlead.resumeLead",
+          "smartlead.addLead",
+          "monaco.enrollContactsInCampaign"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "get someone's linkedin profile details",
+      "expected": [
+        "linkedin.enrichProfile",
+        "prospeo.enrichLinkedin",
+        "reverseContact.enrichProfileFromLinkedin",
+        "datagma.enrichPerson",
+        "aiArk.enrichPerson",
+        "explorium.enrichProspectLinkedinProfile",
+        "kaspr.enrichLinkedinProfile"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "moltsets.searchLinkedinProfile",
+          "linkedin.fetchProfileViewers",
+          "reverseContact.enrichProfileFromLinkedin",
+          "linkedin.findProfileUrl",
+          "kaspr.enrichLinkedinProfile"
+        ],
+        "rank": 3,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "find people who work at a company",
+      "expected": [
+        "aiArk.searchPeople",
+        "airscale.findPeople",
+        "apolloio.searchPeople",
+        "clay.searchPeople",
+        "FullEnrich.searchPeople",
+        "icypeas.findPeople",
+        "moltsets.searchPeople",
+        "oceanio.searchPeople",
+        "peopleDataLabs.searchPeople",
+        "pipecorn.findPeopleAtCompany",
+        "sumble.findPeople",
+        "surfe.searchPeople",
+        "salesNavigator.searchLeads",
+        "salesNavigator.fetchLeads"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "forager.findWorkEmail",
+          "tool.work_email_from_linkedin",
+          "FullEnrich.searchPeople",
+          "aiArk.searchPeople",
+          "aiArk.fetchPeople"
+        ],
+        "rank": 3,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "search companies by industry and employee count",
+      "expected": [
+        "aiArk.searchCompanies",
+        "clay.searchCompanies",
+        "coresignal.searchCompanies",
+        "FullEnrich.searchCompanies",
+        "icypeas.findCompanies",
+        "moltsets.searchCompanies",
+        "oceanio.searchCompanies",
+        "peopleDataLabs.searchCompanies",
+        "salesIntel.searchCompanies",
+        "surfe.searchCompanies",
+        "theirStack.searchCompanies",
+        "zoominfo.searchCompanies",
+        "zoominfoGtm.searchCompanies",
+        "salesNavigator.searchAccounts",
+        "aiArk.fetchCompanies",
+        "FullEnrich.fetchCompanies"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.get_employees_count_per_country",
+          "salesNavigator.findEmployeesCount",
+          "surfe.searchCompanies",
+          "aiArk.countCompanies",
+          "tool.enrich_company"
+        ],
+        "rank": 3,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "find companies similar to a domain",
+      "expected": [
+        "aiArk.searchCompanies",
+        "aiArk.fetchCompanies",
+        "aiArk.countCompanies"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "companyEnrich.findSimilarCompanies",
+          "linkedin.extractSimilarCompanies",
+          "tool.find_linkedin_company_url_from_domain",
+          "tool.find_competitors",
+          "hunter.searchDomain"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "get open job postings at a company",
+      "expected": [
+        "predictLeads.searchJobOpenings",
+        "cargoSignals.listenJobOffers"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "coresignal.searchJobs",
+          "predictLeads.searchJobOpenings",
+          "linkedin.searchJobs",
+          "captainData.getJob",
+          "theirStack.searchJobs"
+        ],
+        "rank": 2,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "validate a phone number",
+      "expected": [
+        "clearoutPhone.verifyPhone"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "clearoutPhone.verifyPhone",
+          "tool.phone_waterfall",
+          "airscale.reversePhone",
+          "lemlist.verifyEmail",
+          "lemlist.findPhone"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "crawl an entire website",
+      "expected": [
+        "firecrawl.crawl",
+        "firecrawl.crawl.extractor"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "firecrawl.crawl.extractor",
+          "firecrawl.crawl",
+          "predictLeads.searchWebsiteEvolutions",
+          "firecrawl.scrape",
+          "tool.find_linkedin_company_url_from_domain"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "list every url on a site",
+      "expected": [
+        "firecrawl.map"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.find_linkedin_company_url_from_domain",
+          "http.fetchUrl",
+          "linkedin.findProfileUrl",
+          "tool.find_linkedin_url_from_personal_email",
+          "tool.unshorten_url"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "get google search results for a keyword",
+      "expected": [
+        "serper.search",
+        "firecrawl.search"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.google_maps_search",
+          "linkup.search",
+          "x.searchPeople",
+          "serper.search",
+          "adyntel.getGoogleAds"
+        ],
+        "rank": 4,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "get g2 reviews for a product",
+      "expected": [
+        "g2.enrichProduct",
+        "piloterr.getG2ProductInfo"
+      ],
+      "cargo": {
+        "results": [
+          "piloterr.getG2ProductInfo"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "g2.fetchProducts",
+          "g2.enrichProduct",
+          "piloterr.getG2ProductInfo",
+          "stripe.getProduct"
+        ],
+        "rank": 2,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "text message a prospect",
+      "expected": [
+        "onesignal.sendSms"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "lemlist.getContactMessages",
+          "xAccount.sendMessage",
+          "explorium.enrichProspectLinkedinPosts",
+          "linkedin.messageProfile",
+          "lemlist.sendWhatsappMessage"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "get my calendly bookings",
+      "expected": [
+        "calendly.fetchEvents"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "calendly.fetchEvents"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "read rows from a google sheet",
+      "expected": [
+        "googleSheets.fetchWorksheet"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "googleSheets.insert",
+          "googleSheets.update",
+          "googleSheets.upsert",
+          "googleSheets.fetchWorksheet",
+          "tool.google_maps_search"
+        ],
+        "rank": 4,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "update a row in a spreadsheet",
+      "expected": [
+        "googleSheets.update",
+        "googleSheets.upsert"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "googleSheets.update",
+          "googleSheets.upsert",
+          "sql.updateRecords",
+          "googleSheets.insert",
+          "netsuite.updateRecords"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "which companies are growing headcount",
+      "expected": [
+        "cargoSignals.listenCompanyGrowth",
+        "cargoSignals.listenForecastedGrowth",
+        "cargoSignals.listenDepartmentGrowth"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "linkedin.findCustomHeadcount",
+          "cargoSignals.listenCompanyGrowth",
+          "salesNavigator.searchAccounts",
+          "icypeas.findCompanies",
+          "tool.enrich_company"
+        ],
+        "rank": 2,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "historical headcount by department",
+      "expected": [
+        "companyEnrich.getWorkforce",
+        "cargoSignals.listenDepartmentGrowth"
+      ],
+      "cargo": {
+        "results": [
+          "companyEnrich.getWorkforce"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "companyEnrich.getWorkforce",
+          "cargoSignals.listenDepartmentGrowth",
+          "salesNavigator.searchAccounts",
+          "salesNavigator.fetchAccounts",
+          "linkedin.findCustomHeadcount"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "send a linkedin message to a connection",
+      "expected": [
+        "linkedin.messageProfile"
+      ],
+      "cargo": {
+        "results": [
+          "linkedin.messageProfile"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "linkedin.messageProfile",
+          "linkedin.likePost",
+          "linkedin.enrichPost",
+          "linkedin.commentPost",
+          "linkedin.extractProfilePostActivity"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "find a linkedin url from a person's name",
+      "expected": [
+        "linkedin.findProfileUrl",
+        "linkedin.enrichProfileFromName"
+      ],
+      "cargo": {
+        "results": [
+          "aiArk.findMobilePhone"
+        ],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "linkedin.findProfileUrl",
+          "tool.find_linkedin_url_from_personal_email",
+          "cleon1.findPhoneFromLinkedin",
+          "FullEnrich.lookupPerson",
+          "tool.work_email_from_linkedin"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "get a company's tech stack summary",
+      "expected": [
+        "builtwith.getDomainSummary"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "builtwith.getDomainSummary",
+          "predictLeads.searchTechnologies",
+          "explorium.fetchBusinessStatistics",
+          "aiArk.fetchCompanies",
+          "theirStack.fetchCompanies"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    }
+  ]
+}

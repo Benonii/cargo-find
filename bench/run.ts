@@ -37,7 +37,9 @@ const summarize = (outcomes: EngineOutcome[]): EngineSummary => ({
   empty: outcomes.filter((item) => item.results.length === 0).length
 });
 
-const queries = JSON.parse(readFileSync('bench/queries.json', 'utf8')) as BenchmarkQuery[];
+const setName = process.argv[2] ?? 'queries';
+const outputName = setName === 'queries' ? 'results' : `${setName}-results`;
+const queries = JSON.parse(readFileSync(`bench/${setName}.json`, 'utf8')) as BenchmarkQuery[];
 const finder = loadFinder();
 const rows: BenchmarkRow[] = [];
 
@@ -64,7 +66,7 @@ const report: BenchmarkReport = {
   rows
 };
 
-writeFileSync('bench/results.json', `${JSON.stringify(report, null, 2)}\n`);
+writeFileSync(`bench/${outputName}.json`, `${JSON.stringify(report, null, 2)}\n`);
 console.log(`Queries: ${report.total}`);
 console.log(`Cargo search   top-1 ${report.cargo.top1}  top-5 ${report.cargo.top5}  empty ${report.cargo.empty}`);
 console.log(`cargo-find     top-1 ${report.cargoFind.top1}  top-5 ${report.cargoFind.top5}  empty ${report.cargoFind.empty}`);
