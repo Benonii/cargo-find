@@ -45,3 +45,37 @@ export type BenchmarkReport = {
   cargoFind: EngineSummary;
   rows: BenchmarkRow[];
 };
+
+export type PlanMode = 'withFinder' | 'alone';
+
+export type PlanStep = {
+  title: string;
+  actionId: string;
+  why: string;
+  real: boolean;
+  entry?: {
+    name: string;
+    integration?: string;
+    description: string;
+    price: string;
+    usage: string;
+    kind: string;
+  };
+};
+
+export type PlanRun = {
+  mode: PlanMode;
+  state: 'running' | 'done' | 'failed';
+  error?: string;
+  searches: string[];
+  summary: string;
+  steps: PlanStep[];
+  realSteps: number;
+  credits: number;
+  model: string;
+};
+
+export type PlanStart = {
+  goal: string;
+  runs: Record<PlanMode, string>;
+};

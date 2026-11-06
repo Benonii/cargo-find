@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 import { describeEntry, describeResult, type EntryKind, handleMcpMessage } from '@/index';
 import { getFinder } from './finder';
 import { page } from './page';
+import { goalLimits, hasCapacity, type PlanEnvironment, readPlan, startPlan } from './planner';
 
 type Bindings = { DATA_BASE_URL?: string };
 
@@ -42,7 +43,9 @@ app.get('/api/actions/:id', async (context) => {
   const identifier = context.req.param('id');
   const finder = await getFinder(dataBaseUrl(context));
   const entry = finder.get(identifier);
-  return entry ? context.json(describeEntry(entry)) : context.json({ error: `No entry with id ${identifier}` }, 404);
+  return entry
+    ? context.json(describeEntry(entry))
+    : context.json({ error: `No entry with id ${identifier}` }, 404);
 });
 
 app.get('/api/status', async (context) => {
@@ -53,6 +56,58 @@ app.get('/api/status', async (context) => {
     cliVersion: finder.catalog.cliVersion,
     semantic: finder.semantic
   });
+});
+
+const planEnvironment = (context: Context): PlanEnvironment =>
+  (context.env as PlanEnvironment | undefined) ?? {};
+
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+app.post('/api/plan', async (context) => {
+  const environment = planEnvironment(context);
+  if (!environment.CARGO_API_TOKEN) {
+    return context.json({ error: 'Live agent runs are not switched on for this deployment yet.' }, 503);
+  }
+  let goal = '';
+  try {
+    const body: unknown = await context.req.json();
+    goal = typeof body === 'object' && body !== null && 'goal' in body ? String(body.goal).trim() : '';
+  } catch {
+    goal = '';
+  }
+  if (goal.length < goalLimits.minimum || goal.length > goalLimits.maximum) {
+    return context.json(
+      { error: `Describe the goal in ${goalLimits.minimum} to ${goalLimits.maximum} characters.` },
+      400
+    );
+  }
+  if (!hasCapacity()) {
+    return context.json(
+      { error: 'Lots of people are trying this right now. Try again in a few minutes.' },
+      429
+    );
+  }
+  try {
+    const runs = await startPlan(environment, goal, `${new URL(context.req.url).origin}/mcp`);
+    return context.json({ goal, runs });
+  } catch (error) {
+    return context.json({ error: error instanceof Error ? error.message : 'Could not start the agent' }, 502);
+  }
+});
+
+app.get('/api/plan/:uuid', async (context) => {
+  const environment = planEnvironment(context);
+  const uuid = context.req.param('uuid');
+  if (!environment.CARGO_API_TOKEN || !uuidPattern.test(uuid)) {
+    return context.json({ error: 'Unknown run' }, 404);
+  }
+  try {
+    const finder = await getFinder(dataBaseUrl(context));
+    const plan = await readPlan(environment, uuid, finder);
+    return plan ? context.json(plan) : context.json({ error: 'Unknown run' }, 404);
+  } catch {
+    return context.json({ error: 'Unknown run' }, 404);
+  }
 });
 
 app.post('/mcp', async (context) => {
