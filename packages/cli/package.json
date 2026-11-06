@@ -1,0 +1,15 @@
+{
+  "name": "cargo-find",
+  "version": "0.1.0",
+  "description": "Find the right Cargo (getcargo.ai) action for a GTM job in plain English. CLI and MCP server, works offline.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "cargo-find": "dist/cli.js" },
+  "files": ["dist", "data", "README.md"],
+  "scripts": {
+    "build": "bun build src/cli.ts --target node --outfile dist/cli.js && rm -rf data && cp -r ../core/data data"
+  },
+  "keywords": ["cargo", "getcargo", "gtm", "mcp", "agents", "search"],
+  "engines": { "node": ">=20" },
+  "dependencies": {}
+}

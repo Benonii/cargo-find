@@ -1,0 +1,1126 @@
+{
+  "generatedAt": "2026-11-06T22:35:49.269Z",
+  "cliVersion": "1.0.142",
+  "total": 50,
+  "cargo": {
+    "top1": 6,
+    "top5": 6,
+    "empty": 44
+  },
+  "cargoFind": {
+    "top1": 38,
+    "top5": 45,
+    "empty": 0
+  },
+  "rows": [
+    {
+      "query": "sync accounts to hubspot",
+      "expected": [
+        "hubspot.upsertRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.upsertRecords",
+          "hubspot.updateRecords",
+          "hubspot.deleteRecords",
+          "hubspot.mergeRecords",
+          "hubspot.fetchRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "create or update a hubspot company",
+      "expected": [
+        "hubspot.upsertRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.upsertRecords",
+          "hubspot.updateRecords",
+          "hubspot.deleteRecords",
+          "hubspot.mergeRecords",
+          "hubspot.insertRecord"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "push contacts into salesforce",
+      "expected": [
+        "salesforce.upsertRecords",
+        "salesforce.insertRecord"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "salesforce.upsertRecords",
+          "salesforce.convertLead",
+          "salesforce.updateRecords",
+          "salesforce.insertRecord",
+          "salesforce.deleteRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "save a lead in pipedrive",
+      "expected": [
+        "pipedrive.upsertRecords",
+        "pipedrive.insertRecord"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "pipedrive.upsertRecords",
+          "pipedrive.getRecord",
+          "pipedrive.insertRecord",
+          "pipedrive.fetchRecords",
+          "pipedrive.updateRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "update a deal in hubspot",
+      "expected": [
+        "hubspot.updateRecords",
+        "hubspot.upsertRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.updateRecords",
+          "hubspot.upsertRecords",
+          "hubspot.deleteRecords",
+          "hubspot.mergeRecords",
+          "hubspot.fetchRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "delete a contact from hubspot",
+      "expected": [
+        "hubspot.deleteRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.deleteRecords",
+          "hubspot.deleteFromList",
+          "hubspot.deleteAssociation",
+          "hubspot.unsubscribeContactFromAllSubscriptions",
+          "hubspot.updateRecords"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "merge duplicate salesforce accounts",
+      "expected": [
+        "salesforce.mergeRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "salesforce.mergeRecords",
+          "salesforce.updateRecords",
+          "salesforce.deleteRecords",
+          "salesforce.upsertRecords",
+          "salesforce.insertRecord"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "run a SOQL query",
+      "expected": [
+        "salesforce.soqlQuery"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "salesforce.soqlQuery",
+          "metabase.runSql",
+          "peopleDataLabs.queryPeople",
+          "peopleDataLabs.queryCompanies",
+          "sql.fetchCommand"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "send a slack message to a channel",
+      "expected": [
+        "slack.postMessage"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "slack.postMessage",
+          "slack.searchMessages",
+          "slack.listChannels",
+          "slack.getConversationHistory",
+          "slack.getThread"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "notify the team on slack",
+      "expected": [
+        "slack.postMessage"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "slack.postMessage",
+          "slack.searchMessages",
+          "microsoftTeams.createChatMessage",
+          "microsoftTeams.createChannelMessage",
+          "linkedin.fetchPosts"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "add a lead to a lemlist campaign",
+      "expected": [
+        "lemlist.createLead"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "lemlist.createLead",
+          "lemlist.unsubscribeLeadFromCampaign",
+          "lemlist.getCampaign",
+          "lemlist.fetchCampaigns",
+          "lemlist.fetchCampaignStats"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "enroll a contact in an apollo sequence",
+      "expected": [
+        "apolloio.addContactToSequence"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "apolloio.addContactToSequence",
+          "apolloio.removeContactFromSequence",
+          "apolloio.createContact",
+          "apolloio.upsertContact",
+          "apolloio.fetchContacts"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "add a row to a google sheet",
+      "expected": [
+        "googleSheets.insert",
+        "googleSheets.upsert"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "googleSheets.insert",
+          "googleSheets.upsert",
+          "googleSheets.update",
+          "googleSheets.fetchWorksheet",
+          "tool.google_maps_search"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "create a page in notion",
+      "expected": [
+        "notion.createPage"
+      ],
+      "cargo": {
+        "results": [
+          "notion.createPage",
+          "notion.createComment"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "notion.createPage",
+          "notion.getPage",
+          "notion.createComment",
+          "notion.updatePage",
+          "notion.appendContent"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "upsert a stripe customer",
+      "expected": [
+        "stripe.upsertCustomers"
+      ],
+      "cargo": {
+        "results": [
+          "stripe.upsertCustomers"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "stripe.upsertCustomers",
+          "customerio.upsertCustomer",
+          "stripe.getCustomer",
+          "stripe.insertCustomer",
+          "stripe.updateCustomers"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "find someone's work email",
+      "expected": [
+        "tool.email_waterfall",
+        "hunter.findEmail",
+        "lemlist.findEmail",
+        "forager.findWorkEmail"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "forager.findWorkEmail",
+          "tool.work_email_from_personal",
+          "tool.work_email_from_linkedin",
+          "forager.findPersonalEmail",
+          "datagma.findEmail"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "get a work email from a linkedin url",
+      "expected": [
+        "tool.work_email_from_linkedin",
+        "anymailFinder.findEmailFromLinkedin"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.work_email_from_linkedin",
+          "forager.findWorkEmail",
+          "tool.find_linkedin_url_from_personal_email",
+          "tool.work_email_from_personal",
+          "anymailFinder.findEmailFromLinkedin"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "find a mobile phone number for a person",
+      "expected": [
+        "tool.phone_waterfall",
+        "aiArk.findMobilePhone",
+        "lemlist.findPhone"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "forager.findPhone",
+          "tool.phone_waterfall",
+          "datagma.findPhone",
+          "aiArk.findMobilePhone",
+          "prospeo.findPhone"
+        ],
+        "rank": 2,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "check if an email address will bounce",
+      "expected": [
+        "tool.email_validator",
+        "neverBounce.verifyEmail",
+        "zeroBounce.verifyEmail",
+        "hunter.verifyEmail",
+        "bouncer.verifyEmail",
+        "bounceban.verifyEmail"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "bouncer.verifyEmail",
+          "tool.email_validator",
+          "findyMail.verifyEmail",
+          "bounceban.verifyEmail",
+          "anymailFinder.verifyEmail"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "enrich a company from its domain",
+      "expected": [
+        "tool.enrich_company",
+        "aiArk.enrichCompany",
+        "linkedin.enrichCompanyFromDomain",
+        "companyEnrich.enrichByDomain",
+        "apolloio.enrichOrganization",
+        "reverseContact.enrichCompanyFromDomain"
+      ],
+      "cargo": {
+        "results": [
+          "aiArk.enrichCompany",
+          "FullEnrich.lookupCompany"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "linkedin.enrichCompanyFromDomain",
+          "reverseContact.enrichCompanyFromDomain",
+          "companyEnrich.enrichByDomain",
+          "enrichCrm.enrichCompany",
+          "octave.enrichCompany"
+        ],
+        "rank": 1,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "enrich a person's profile",
+      "expected": [
+        "tool.enrich_contact",
+        "tool.enrich_lead",
+        "apolloio.enrichPerson",
+        "aiArk.enrichPerson",
+        "hunter.enrichPerson",
+        "peopleDataLabs.enrichPerson",
+        "linkedin.enrichProfile"
+      ],
+      "cargo": {
+        "results": [
+          "aiArk.enrichPerson",
+          "datagma.enrichPersonFromPersonalEmail",
+          "FullEnrich.reverseEmailLookup",
+          "prospeo.enrichLinkedin"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "hunter.enrichPerson",
+          "tool.enrich_contact",
+          "leadMagic.enrichProfile",
+          "wiza.enrichPerson",
+          "linkedin.enrichProfile"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "who are the decision makers at this account",
+      "expected": [
+        "tool.find_stakeholders",
+        "pipecorn.findPeopleAtCompany"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.find_stakeholders",
+          "sillage.listenSignals",
+          "pipecorn.findPeopleAtCompany",
+          "surfe.searchPeople",
+          "cargoSignals.listenNewDecisionMakerWatchlist"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "find competitors of a company",
+      "expected": [
+        "tool.find_competitors"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.find_competitors",
+          "cargoSignals.listenCompetitorCustomers",
+          "companyEnrich.findSimilarCompanies",
+          "FullEnrich.searchCompanies",
+          "icypeas.findCompanies"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "research an account before a call",
+      "expected": [
+        "tool.account_research"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "cognism.enrichContact",
+          "x.getFollowing",
+          "monaco.getAccount",
+          "datagma.findPhoneAndEmail",
+          "zoominfoGtm.enrichContact"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "find the linkedin page of a company from its website",
+      "expected": [
+        "tool.find_linkedin_company_url_from_domain",
+        "linkedin.enrichCompanyFromDomain"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.find_linkedin_company_url_from_domain",
+          "tool.work_email_from_linkedin",
+          "tool.find_linkedin_url_from_personal_email",
+          "linkedin.fetchPageFollowers",
+          "linkedin.findProfileUrl"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "what technologies does a website use",
+      "expected": [
+        "builtwith.enrichDomain",
+        "builtwith.getDomainSummary",
+        "storeleads.enrichDomain",
+        "sumble.enrichOrganization",
+        "explorium.enrichBusinessTechnographics"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "builtwith.findWebsitesByTechnology",
+          "predictLeads.searchTechnologies",
+          "theirStack.searchTechnologies",
+          "storeleads.enrichDomain",
+          "explorium.fetchBusinesses"
+        ],
+        "rank": 4,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "companies using hubspot as their CRM",
+      "expected": [
+        "builtwith.findWebsitesByTechnology",
+        "sumble.findOrganizations",
+        "sumble.fetchOrganizations"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.upsertRecords",
+          "hubspot.updateRecords",
+          "hubspot.deleteRecords",
+          "hubspot.insertRecord",
+          "hubspot.mergeRecords"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "list local businesses from google maps",
+      "expected": [
+        "tool.google_maps_search"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.google_maps_search",
+          "explorium.fetchBusinesses",
+          "explorium.fetchBusinesses.extractor",
+          "explorium.fetchBusinessStatistics",
+          "serper.searchPlaces"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "scrape the text of a web page",
+      "expected": [
+        "firecrawl.scrape",
+        "http.browse"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "brightData.scrapeFacebookPagePosts",
+          "firecrawl.scrape",
+          "brightData.scrapeFacebookProfile",
+          "brightData.scrapeTwitterProfile",
+          "brightData.scrapeTikTokProfile"
+        ],
+        "rank": 2,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "search the web for recent news about a company",
+      "expected": [
+        "exa.search",
+        "firecrawl.search",
+        "perplexity.instruct",
+        "serper.search",
+        "linkup.search"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "tool.find_linkedin_company_url_from_domain",
+          "predictLeads.searchWebsiteEvolutions",
+          "exa.search",
+          "salesNavigator.searchCompanyMetrics",
+          "contactOut.search"
+        ],
+        "rank": 3,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "ask an LLM to classify a lead",
+      "expected": [
+        "native.classify",
+        "openAi.instruct",
+        "anthropic.instruct"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "native.classify",
+          "lemlist.getLead"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "call a REST API endpoint",
+      "expected": [
+        "http.call"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "salesforce.restRequest",
+          "http.call",
+          "closecom.fetchCallActivities"
+        ],
+        "rank": 2,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "receive a webhook",
+      "expected": [
+        "http.listenHook"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "heyReach.listenEvents",
+          "http.listenHook",
+          "smartlead.listenEvents",
+          "calendly.fetchEvents",
+          "instantlyV2.listenEvents"
+        ],
+        "rank": 2,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "who starred my github repo",
+      "expected": [
+        "github.fetchStargazers"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "github.fetchRepositories",
+          "github.fetchStargazers",
+          "predictLeads.searchGithubRepositories",
+          "github.getUser",
+          "github.searchContributors"
+        ],
+        "rank": 2,
+        "tier": "name"
+      }
+    },
+    {
+      "query": "find contributors to an open source project",
+      "expected": [
+        "github.searchContributors"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "github.searchContributors"
+        ],
+        "rank": 1,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "alert me when a champion changes jobs",
+      "expected": [
+        "cargoSignals.listenJobChanges",
+        "waterfall.detectJobChange"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "cargoSignals.listenJobChanges",
+          "sillage.listenSignals",
+          "explorium.listenProspectEvents",
+          "waterfall.detectJobChange",
+          "coresignal.searchJobs"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "companies that are hiring a lot",
+      "expected": [
+        "cargoSignals.listenRecruitmentCampaign"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "theirStack.searchJobs",
+          "coresignal.searchJobs",
+          "linkedin.searchJobs",
+          "sumble.findJobs",
+          "theirStack.fetchJobs"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "companies likely to raise money soon",
+      "expected": [
+        "cargoSignals.listenForecastedFunding"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "cargoSignals.listenForecastedFunding"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "get funding rounds for a startup",
+      "expected": [
+        "enrichCrm.getFunding",
+        "explorium.enrichBusinessFundingAndAcquisitions"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "enrichCrm.getFunding"
+        ],
+        "rank": 1,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "identify anonymous website visitors",
+      "expected": [
+        "rb2b.listenProfiles",
+        "snitcher.fetchSessions",
+        "snitcher.fetchOrganisations",
+        "snitcher.searchSessions"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "snitcher.searchSessions",
+          "snitcher.fetchSessions",
+          "linkedin.visitProfile"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "route inbound leads to reps round robin",
+      "expected": [
+        "native.allocate",
+        "native.balance"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "native.allocate",
+          "icypeas.scanDomain",
+          "salesNavigator.fetchLeadsLegacy",
+          "salesNavigator.extractLeadSearch",
+          "closecom.fetchLeads"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "wait for a reply to my email",
+      "expected": [
+        "native.waitEmailEvent"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "native.waitEmailEvent",
+          "resend.sendEmail",
+          "pipecorn.findPersonalEmail",
+          "pipecorn.findPhoneAndEmail",
+          "pipecorn.findEmail"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "send an email from my cargo mailbox",
+      "expected": [
+        "native.sendEmail"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "native.sendEmail",
+          "lemlist.sendEmail",
+          "Sendgrid.sendEmail",
+          "resend.sendEmail",
+          "tool.work_email_from_personal"
+        ],
+        "rank": 1,
+        "tier": "keyword"
+      }
+    },
+    {
+      "query": "ask a human to approve before sending",
+      "expected": [
+        "native.humanReview"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "xAccount.sendMessage",
+          "lemlist.sendEmail",
+          "lemlist.sendWhatsappMessage",
+          "hunter.verifyEmail",
+          "bounceban.verifyEmail"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "score leads",
+      "expected": [
+        "native.scoring"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "storeleads.listenList",
+          "octave.qualifyPerson",
+          "storeleads.fetchDomains",
+          "storeleads.enrichDomain",
+          "monaco.fetchContacts"
+        ],
+        "rank": null,
+        "tier": null
+      }
+    },
+    {
+      "query": "run python code in a workflow",
+      "expected": [
+        "native.python"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "native.python",
+          "promptLayer.run",
+          "captainData.fetchWorkflowResults",
+          "salesforce.invokeFlow",
+          "apify.runTask"
+        ],
+        "rank": 1,
+        "tier": "semantic"
+      }
+    },
+    {
+      "query": "Upsert records",
+      "expected": [
+        "hubspot.upsertRecords",
+        "salesforce.upsertRecords",
+        "attio.upsertRecords",
+        "pipedrive.upsertRecords",
+        "outreach.upsertRecords",
+        "sql.upsertRecords",
+        "netsuite.upsertRecords"
+      ],
+      "cargo": {
+        "results": [
+          "hubspot.upsertRecords",
+          "salesforce.upsertRecords",
+          "outreach.upsertRecords",
+          "pipedrive.upsertRecords",
+          "sql.upsertRecords"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "outreach.upsertRecords",
+          "sql.upsertRecords",
+          "attio.upsertRecords",
+          "salesforce.upsertRecords",
+          "hubspot.upsertRecords"
+        ],
+        "rank": 1,
+        "tier": "exact"
+      }
+    },
+    {
+      "query": "hubspot.upsertRecords",
+      "expected": [
+        "hubspot.upsertRecords"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "hubspot.upsertRecords",
+          "hubspot.addToList",
+          "salesloft.upsertAccount",
+          "salesloft.upsertPerson",
+          "lemlist.upsertLead"
+        ],
+        "rank": 1,
+        "tier": "exact"
+      }
+    },
+    {
+      "query": "Find email",
+      "expected": [
+        "tool.email_waterfall"
+      ],
+      "cargo": {
+        "results": [
+          "tool.email_waterfall",
+          "tool.find_linkedin_url_from_personal_email",
+          "tool.work_email_from_linkedin",
+          "tool.work_email_from_personal",
+          "aiArk.enrichPerson"
+        ],
+        "rank": 1
+      },
+      "cargoFind": {
+        "results": [
+          "tool.email_waterfall",
+          "lemlist.findEmail",
+          "datagma.findEmail",
+          "enrowio.findEmail",
+          "anymailFinder.findEmail"
+        ],
+        "rank": 1,
+        "tier": "exact"
+      }
+    },
+    {
+      "query": "fetchStargazers",
+      "expected": [
+        "github.fetchStargazers"
+      ],
+      "cargo": {
+        "results": [],
+        "rank": null
+      },
+      "cargoFind": {
+        "results": [
+          "github.fetchStargazers",
+          "piloterr.fetchCompanies",
+          "livestorm.fetchPeople",
+          "stripe.fetchProducts",
+          "stripe.fetchCustomers"
+        ],
+        "rank": 1,
+        "tier": "exact"
+      }
+    }
+  ]
+}

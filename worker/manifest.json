@@ -1,0 +1,3 @@
+{
+  "outboundAllowlist": ["cdn.jsdelivr.net", "raw.githubusercontent.com"]
+}

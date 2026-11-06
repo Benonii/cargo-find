@@ -1,0 +1,23 @@
+{
+  "name": "cargo-find-worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch dev.ts",
+    "sync": "rm -rf src/core src/data && cp -r ../packages/core/src src/core && mkdir -p src/data && cp ../packages/core/data/catalog.json src/data/catalog.json",
+    "type:check": "tsc --noEmit",
+    "deploy": "npm run sync && cargo-ai hosting deployment create --worker-uuid $CARGO_WORKER_UUID --source ./"
+  },
+  "dependencies": {
+    "@cargo-ai/worker-sdk": "^1.0.15",
+    "zod": "4.4.3",
+    "hono": "4.13.16"
+  },
+  "devDependencies": {
+    "@hono/node-server": "^2.0.10",
+    "@types/node": "^20.10.8",
+    "tsx": "^4.23.1",
+    "typescript": "5.9.3"
+  }
+}
