@@ -28,6 +28,14 @@ Every result says why it matched, what it costs in Cargo credits, and the exact 
 
 Run it yourself with `bun run bench`. The synonym list was written while building, with these queries in view, so treat the numbers as a demonstration and not an independent evaluation.
 
+## Agent demo: with and without cargo-find
+
+The Try it tab sends one goal, such as "find leads and update them in my HubSpot", to Cargo's own AI agent twice through the Cargo API (`ai.message.create`). Same model (gpt-4.1-mini), same prompt, same output schema. One run is connected to the cargo-find MCP server; the other has no tools. Every action id each run returns is checked against the catalog.
+
+On that goal, the run with cargo-find searched for "search leads" and "upsert leads in HubSpot" and returned `salesNavigator.searchLeads` then `hubspot.upsertRecords`, both real. The run without it returned `leadfinder.find_leads` and `hubspot.update_leads`, neither of which exists. Each run costs about 0.15 Cargo credits.
+
+The worker needs a workspace API token as the `CARGO_API_TOKEN` secret for this tab; without it the tab says live runs are off.
+
 ## How ranking works
 
 Results are sorted by tier first. A result in a stronger tier always beats a weaker one, whatever their scores.
