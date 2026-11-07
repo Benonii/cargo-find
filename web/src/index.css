@@ -43,6 +43,8 @@
   --red: #b91c1c;
   --red-tint: #fdeaea;
   --brand: #15803d;
+  --chart-find: #15803d;
+  --chart-cargo: #4a74c9;
   --brand-glow: rgba(21, 128, 61, 0.14);
   --shadow-card: 0 0 0 1px var(--line), 0 1px 2px rgba(16, 24, 20, 0.04), 0 4px 16px rgba(16, 24, 20, 0.04);
   --shadow-btn: 0 0 0 1px var(--line-strong), 0 1px 2px rgba(16, 24, 20, 0.05);
@@ -87,6 +89,8 @@
     --red: #f87171;
     --red-tint: rgba(248, 113, 113, 0.13);
     --brand: #22c55e;
+    --chart-find: #16a34a;
+    --chart-cargo: #6b92e0;
     --brand-glow: rgba(34, 197, 94, 0.16);
     --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.07), 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
     --shadow-btn: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -142,6 +146,8 @@
   --color-red: var(--red);
   --color-red-tint: var(--red-tint);
   --color-brand: var(--brand);
+  --color-chart-find: var(--chart-find);
+  --color-chart-cargo: var(--chart-cargo);
   --shadow-card: var(--shadow-card);
   --shadow-btn: var(--shadow-btn);
   --shadow-hairline: var(--shadow-hairline);
@@ -202,5 +208,11 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes wire-flow {
+  to {
+    stroke-dashoffset: -20;
   }
 }

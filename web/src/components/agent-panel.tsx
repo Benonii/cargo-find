@@ -16,7 +16,7 @@ export const AgentPanel = () => {
   return (
     <div className="flex flex-col gap-3">
       <Tabs defaultValue="claude">
-        <TabsList className="max-w-full overflow-x-auto">
+        <TabsList className="mx-auto max-w-full overflow-x-auto">
           <TabsTab value="claude">Claude</TabsTab>
           <TabsTab value="cursor">Cursor</TabsTab>
           <TabsTab value="prompt">Prompt</TabsTab>

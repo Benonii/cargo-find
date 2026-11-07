@@ -44,7 +44,7 @@ Within a tier, Cargo's preset tools (waterfalls that try several providers) rank
 MCP (streamable HTTP, no sign-in):
 
 ```
-claude mcp add --transport http cargo-find https://cargo-find-90848e4b.worker.getcargo.run/mcp
+claude mcp add --transport http cargo-find https://cargo-find.vercel.app/mcp
 ```
 
 Tools: `find_action(query, limit?, kind?, integration?)` and `get_action(id)`.
@@ -52,8 +52,8 @@ Tools: `find_action(query, limit?, kind?, integration?)` and `get_action(id)`.
 HTTP:
 
 ```
-curl "https://cargo-find-90848e4b.worker.getcargo.run/api/search?q=sync+accounts+to+hubspot"
-curl "https://cargo-find-90848e4b.worker.getcargo.run/api/actions/hubspot.upsertRecords"
+curl "https://cargo-find.vercel.app/api/search?q=sync+accounts+to+hubspot"
+curl "https://cargo-find.vercel.app/api/actions/hubspot.upsertRecords"
 ```
 
 CLI, offline (the index ships in the package):

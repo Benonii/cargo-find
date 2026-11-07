@@ -1,0 +1,5 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [{ "source": "/(.*)", "destination": "https://cargo-find-90848e4b.worker.getcargo.run/$1" }],
+  "git": { "deploymentEnabled": false }
+}

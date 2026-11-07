@@ -6,11 +6,11 @@ type CodeBlockProps = {
 };
 
 export const CodeBlock = ({ code, label = 'Copy' }: CodeBlockProps) => (
-  <div className="flex flex-col gap-2 rounded-card bg-inset p-3 shadow-hairline">
-    <pre className="max-h-64 overflow-auto font-mono text-[12px] leading-relaxed whitespace-pre-wrap break-all text-ink">
+  <div className="flex items-start gap-2 border border-line-strong bg-background/60 p-2.5">
+    <pre className="max-h-48 min-w-0 flex-1 overflow-auto py-1 font-mono text-[12px] leading-relaxed whitespace-pre-wrap break-all text-ink">
       {code}
     </pre>
-    <div className="flex justify-end">
+    <div className="shrink-0">
       <CopyButton value={code} label={label} />
     </div>
   </div>

@@ -15,7 +15,7 @@ type ResultCardProps = {
 
 export const ResultCard = ({ result, position }: ResultCardProps) => (
   <li
-    className="flex flex-col gap-2 rounded-card bg-surface p-3 shadow-card"
+    className="flex min-w-0 flex-col gap-2 border border-line-strong bg-background/60 p-3"
     style={{ animation: `fade-up 300ms cubic-bezier(0.23,1,0.32,1) ${position * 40}ms both` }}
   >
     <div className="flex items-start justify-between gap-2">
@@ -36,8 +36,8 @@ export const ResultCard = ({ result, position }: ResultCardProps) => (
         {tierLabels[result.matchedOn]}
       </span>
     </div>
-    {result.description ? <p className="text-[12.5px] text-ink-2">{result.description}</p> : null}
-    <div className="flex flex-wrap items-center justify-between gap-2">
+    {result.description ? <p className="line-clamp-2 text-[12.5px] text-ink-2">{result.description}</p> : null}
+    <div className="mt-auto flex flex-wrap items-center justify-between gap-2">
       <span className="text-[11.5px] text-ink-3">
         {result.kind}, {result.price}
       </span>
