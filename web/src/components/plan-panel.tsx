@@ -1,71 +1,36 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { type FormEvent, useState } from 'react';
-import { readPlan, startPlan } from '@/api';
-import { CopyButton } from '@/components/copy-button';
-import { Badge } from '@/components/ui/badge';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { ArrowUpIcon } from 'lucide-react';
+import { type FormEvent, type KeyboardEvent, useState } from 'react';
+import { readPlan, readStatus, startPlan } from '@/api';
+import { LoadingState } from '@/components/beautiful/loading-state';
+import { SearchChips } from '@/components/beautiful/search-chips';
+import { WorkflowSteps } from '@/components/beautiful/workflow-steps';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Spinner } from '@/components/ui/spinner';
-import type { PlanMode, PlanRun, PlanStep } from '@/types';
+import { Textarea } from '@/components/ui/textarea';
+import type { PlanMode, PlanRun } from '@/types';
 
 const examples = [
-  'I want to automatically find leads and update them in my HubSpot',
+  'Find new leads and update them in my HubSpot',
   'When a champion changes jobs, find their new work email and alert my team in Slack',
   'Turn my GitHub stargazers into scored accounts in Salesforce',
   'Route new inbound demo requests to reps round robin'
 ];
 
 const columns: { mode: PlanMode; title: string; detail: string }[] = [
-  {
-    mode: 'withFinder',
-    title: 'Cargo AI with cargo-find',
-    detail: 'Same model, connected to the cargo-find MCP server.'
-  },
-  {
-    mode: 'alone',
-    title: 'Cargo AI alone',
-    detail: 'Same model and prompt, no tools. It has to remember the actions.'
-  }
+  { mode: 'withFinder', title: 'With cargo-find', detail: 'Cargo AI connected to the cargo-find MCP server' },
+  { mode: 'alone', title: 'Without it', detail: 'Same model and prompt, working from memory' }
 ];
 
-const StepItem = ({ step, position }: { step: PlanStep; position: number }) => (
-  <li className="flex flex-col gap-2 border bg-card p-3">
-    <div className="flex flex-wrap items-start justify-between gap-2">
-      <span className="font-medium">
-        {position}. {step.title}
-      </span>
-      <Badge variant={step.real ? 'secondary' : 'outline'}>
-        {step.real ? 'Real action' : 'Not in Cargo'}
-      </Badge>
-    </div>
-    <code className={`font-mono text-xs break-all ${step.real ? '' : 'text-muted-foreground line-through'}`}>
-      {step.actionId}
-    </code>
-    {step.entry ? (
-      <p className="text-xs text-muted-foreground">
-        {step.entry.name}
-        {step.entry.integration ? ` in ${step.entry.integration}` : ''}. {step.entry.description.replace(/\.$/, '')}. Cost:{' '}
-        {step.entry.price}.
-      </p>
-    ) : null}
-    <p className="text-sm">{step.why}</p>
-    {step.entry?.usage ? (
-      <div className="flex justify-end">
-        <CopyButton
-          value={step.entry.usage}
-          label={step.entry.kind === 'extractor' ? 'Copy model' : 'Copy dry run'}
-        />
-      </div>
-    ) : null}
-  </li>
+const ScoreLine = ({ run, highlight }: { run: PlanRun; highlight: boolean }) => (
+  <div className="flex items-baseline gap-2">
+    <span className={`text-3xl font-semibold tabular-nums ${highlight ? 'text-green' : 'text-red'}`}>
+      {run.realSteps}/{run.steps.length}
+    </span>
+    <span className="text-[13px] text-ink-2">actions exist in Cargo</span>
+  </div>
 );
 
-const scoreLine = (run: PlanRun): string =>
-  run.steps.length === 0
-    ? 'No steps returned.'
-    : `${run.realSteps} of ${run.steps.length} actions exist in Cargo.`;
-
-const RunColumn = ({ uuid, title, detail }: { uuid: string; title: string; detail: string }) => {
+const RunColumn = ({ uuid, mode, title, detail }: { uuid: string; mode: PlanMode; title: string; detail: string }) => {
   const run = useQuery({
     queryKey: ['plan', uuid],
     queryFn: ({ signal }) => readPlan(uuid, signal),
@@ -73,45 +38,31 @@ const RunColumn = ({ uuid, title, detail }: { uuid: string; title: string; detai
   });
   const data = run.data;
   const running = !data || data.state === 'running';
+  const highlight = mode === 'withFinder';
 
   return (
-    <section className="flex min-w-0 flex-col gap-3 border p-3">
-      <header className="flex flex-col gap-1">
-        <h3 className="font-mono text-sm font-semibold">{title}</h3>
-        <p className="text-xs text-muted-foreground">{detail}</p>
+    <section
+      className={`flex min-w-0 flex-col gap-4 rounded-card p-4 ${
+        highlight ? 'bg-surface shadow-card' : 'bg-inset shadow-hairline'
+      }`}
+    >
+      <header className="flex flex-col gap-0.5">
+        <h3 className="flex items-center gap-2 text-[15px] font-semibold">
+          {highlight ? <span aria-hidden className="size-2 rounded-full bg-brand" /> : null}
+          {title}
+        </h3>
+        <p className="text-[12.5px] text-ink-2">{detail}</p>
       </header>
-      {data && data.searches.length > 0 ? (
-        <div className="flex flex-col gap-1">
-          <span className="text-xs text-muted-foreground">Searched cargo-find for</span>
-          <ul className="flex flex-wrap gap-1">
-            {[...new Set(data.searches)].map((search) => (
-              <li key={search}>
-                <Badge variant="outline">{search}</Badge>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-      {running ? (
-        <p className="flex items-center gap-2 text-sm" aria-live="polite">
-          <Spinner className="size-3" /> Planning the workflow
-        </p>
-      ) : null}
-      {run.isError ? <p className="text-sm">{run.error.message}</p> : null}
-      {data?.state === 'failed' ? <p className="text-sm">{data.error ?? 'The agent run failed.'}</p> : null}
+      {data ? <SearchChips searches={data.searches} /> : null}
+      {running ? <LoadingState label={highlight ? 'Searching Cargo actions' : 'Recalling actions'} /> : null}
+      {run.isError ? <p className="text-sm text-red">{run.error.message}</p> : null}
+      {data?.state === 'failed' ? <p className="text-sm text-red">{data.error ?? 'The agent run failed.'}</p> : null}
       {data?.state === 'done' ? (
         <>
-          <p className="text-sm font-medium" aria-live="polite">
-            {scoreLine(data)}
-          </p>
-          <ol className="flex flex-col gap-2">
-            {data.steps.map((step, index) => (
-              <StepItem key={`${step.title}:${step.actionId}`} step={step} position={index + 1} />
-            ))}
-          </ol>
-          {data.summary ? <p className="text-xs text-muted-foreground">{data.summary}</p> : null}
-          <p className="text-xs text-muted-foreground">
-            {data.model}, {data.credits} Cargo credits.
+          <ScoreLine run={data} highlight={data.realSteps === data.steps.length && data.steps.length > 0} />
+          <WorkflowSteps steps={data.steps} />
+          <p className="text-[12px] text-ink-3">
+            {data.model}, {data.credits} Cargo credits
           </p>
         </>
       ) : null}
@@ -121,68 +72,89 @@ const RunColumn = ({ uuid, title, detail }: { uuid: string; title: string; detai
 
 export const PlanPanel = () => {
   const [goal, setGoal] = useState(examples[0] ?? '');
-  const plan = useMutation({ mutationFn: startPlan });
+  const queryClient = useQueryClient();
+  const status = useQuery({ queryKey: ['status'], queryFn: ({ signal }) => readStatus(signal), staleTime: 30_000 });
+  const plan = useMutation({
+    mutationFn: startPlan,
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ['status'] })
+  });
+  const ready = goal.trim().length >= 8 && !plan.isPending;
 
-  const submit = (event: FormEvent) => {
-    event.preventDefault();
-    if (goal.trim().length > 0 && !plan.isPending) {
+  const run = () => {
+    if (ready) {
       plan.mutate(goal.trim());
     }
   };
 
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    run();
+  };
+
+  const submitOnEnter = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      run();
+    }
+  };
+
   return (
-    <section className="flex flex-col gap-4">
-      <p className="text-sm">
-        Describe a go-to-market goal. Cargo's own AI agent plans the workflow twice: once with the cargo-find
-        MCP server, once from memory. Every action id it picks is checked against the real Cargo catalog.
-      </p>
-      <form className="flex flex-col gap-2" onSubmit={submit}>
-        <label htmlFor="plan-goal" className="text-sm font-medium">
-          Your goal
+    <div className="flex flex-col gap-4">
+      <form
+        onSubmit={submit}
+        className="flex flex-col gap-2 rounded-2xl bg-surface p-2 shadow-card focus-within:shadow-[0_0_0_2px_var(--brand-glow),var(--shadow-card)]"
+      >
+        <label htmlFor="plan-goal" className="sr-only">
+          Your go-to-market goal
         </label>
-        <div>
-          <Input
-            id="plan-goal"
-            value={goal}
-            onChange={(event) => setGoal(event.target.value)}
-            placeholder="Find leads and update them in my HubSpot"
-            size="lg"
-            maxLength={300}
-          />
-        </div>
-        <div className="flex justify-end">
-          <Button type="submit" disabled={plan.isPending || goal.trim().length < 8}>
-            {plan.isPending ? <Spinner className="size-3" /> : null}
-            Plan the workflow
+        <Textarea
+          id="plan-goal"
+          value={goal}
+          onChange={(event) => setGoal(event.target.value)}
+          onKeyDown={submitOnEnter}
+          placeholder="Describe what you want done, like find new leads and update them in my HubSpot"
+          maxLength={300}
+          rows={2}
+          className="border-none bg-transparent shadow-none before:hidden [&_textarea]:bg-transparent"
+        />
+        <div className="flex items-center justify-between gap-2 px-1">
+          <span className="text-[12px] text-ink-3">
+            {status.data && status.data.liveRunsPerDay > 0
+              ? `${status.data.liveRunsLeftToday} of ${status.data.liveRunsPerDay} live runs left today`
+              : 'Runs on Cargo AI'}
+          </span>
+          <Button type="submit" disabled={!ready} className="rounded-full">
+            {plan.isPending ? 'Starting' : 'Plan workflow'}
+            <ArrowUpIcon />
           </Button>
         </div>
       </form>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {examples.map((example) => (
-          <Button
+          <button
             key={example}
-            variant="outline"
-            size="xs"
-            className="h-auto max-w-full shrink justify-start py-1 text-left whitespace-normal"
+            type="button"
             onClick={() => setGoal(example)}
+            className="max-w-full rounded-full bg-surface px-3 py-1.5 text-left text-[12.5px] text-ink-2 shadow-btn transition-colors hover:bg-hover-2 hover:text-ink"
           >
             {example}
-          </Button>
+          </button>
         ))}
       </div>
-      {plan.isError ? <p className="text-sm">{plan.error.message}</p> : null}
+      {plan.isError ? <p className="text-sm text-red">{plan.error.message}</p> : null}
       {plan.data ? (
         <div className="grid gap-3 md:grid-cols-2">
           {columns.map((column) => (
             <RunColumn
-              key={`${plan.data.runs[column.mode]}`}
+              key={plan.data.runs[column.mode]}
               uuid={plan.data.runs[column.mode]}
+              mode={column.mode}
               title={column.title}
               detail={column.detail}
             />
           ))}
         </div>
       ) : null}
-    </section>
+    </div>
   );
 };

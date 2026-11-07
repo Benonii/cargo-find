@@ -79,3 +79,12 @@ export type PlanStart = {
   goal: string;
   runs: Record<PlanMode, string>;
 };
+
+export type ServiceStatus = {
+  entries: number;
+  snapshotAt: string;
+  cliVersion: string;
+  semantic: boolean;
+  liveRunsLeftToday: number;
+  liveRunsPerDay: number;
+};

@@ -1,4 +1,4 @@
-import type { PlanRun, PlanStart, SearchResponse } from '@/types';
+import type { PlanRun, PlanStart, SearchResponse, ServiceStatus } from '@/types';
 
 const apiBase = import.meta.env.VITE_API_BASE ?? '';
 
@@ -38,6 +38,14 @@ export const startPlan = async (goal: string): Promise<PlanStart> => {
 
 export const readPlan = async (uuid: string, signal: AbortSignal): Promise<PlanRun> => {
   const response = await fetch(`${apiBase}/api/plan/${uuid}`, { signal });
+  if (!response.ok) {
+    throw new Error(await readError(response));
+  }
+  return response.json();
+};
+
+export const readStatus = async (signal: AbortSignal): Promise<ServiceStatus> => {
+  const response = await fetch(`${apiBase}/api/status`, { signal });
   if (!response.ok) {
     throw new Error(await readError(response));
   }

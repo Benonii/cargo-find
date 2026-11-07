@@ -58,9 +58,32 @@ const createApi = (environment: PlanEnvironment) =>
     typeof createCargoApi
   >[0]);
 
+export const dailyComparisonLimit = 100;
+
+const chatNamePrefix = 'cargo-find demo';
+
+const todaysChatName = (): string => `${chatNamePrefix} ${new Date().toISOString().slice(0, 10)}`;
+
+export const comparisonsToday = async (environment: PlanEnvironment): Promise<number> => {
+  const api = createApi(environment);
+  const name = todaysChatName();
+  const pageSize = 100;
+  let counted = 0;
+  for (let offset = 0; offset < dailyComparisonLimit * 2; offset += pageSize) {
+    const { chats } = await api.ai.chat.list({ search: name, limit: pageSize, offset });
+    counted += chats.filter((chat) => chat.name === name).length;
+    if (chats.length < pageSize) {
+      break;
+    }
+  }
+  return Math.floor(counted / 2);
+};
+
 const startRun = async (environment: PlanEnvironment, goal: string, mode: PlanMode, mcpUrl: string) => {
   const api = createApi(environment);
+  const { chat } = await api.ai.chat.create({ name: todaysChatName(), trigger: { type: 'draft' } });
   const result = await api.ai.message.create({
+    chatUuid: chat.uuid,
     parts: [{ type: 'text', text: goal }],
     systemPrompt: prompts[mode],
     maxSteps: mode === 'withFinder' ? 12 : 2,

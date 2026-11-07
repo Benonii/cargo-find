@@ -14,14 +14,10 @@ export const AgentPanel = () => {
   const origin = serviceOrigin();
   const mcpUrl = `${origin}/mcp`;
   return (
-    <section className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold">Use it from your agent</h2>
-      <p className="text-sm text-muted-foreground">
-        Same search, as an MCP server with two tools: find_action and get_action. No sign-in, no API key.
-      </p>
+    <div className="flex flex-col gap-3">
       <Tabs defaultValue="claude">
-        <TabsList className="flex-wrap">
-          <TabsTab value="claude">Claude Code</TabsTab>
+        <TabsList className="max-w-full overflow-x-auto">
+          <TabsTab value="claude">Claude</TabsTab>
           <TabsTab value="cursor">Cursor</TabsTab>
           <TabsTab value="prompt">Prompt</TabsTab>
           <TabsTab value="api">HTTP</TabsTab>
@@ -31,11 +27,11 @@ export const AgentPanel = () => {
           <CodeBlock code={`claude mcp add --transport http cargo-find ${mcpUrl}`} />
         </TabsPanel>
         <TabsPanel value="cursor" className="flex flex-col gap-2">
-          <p className="text-xs text-muted-foreground">Add to .cursor/mcp.json</p>
+          <p className="text-[12px] text-ink-3">Add to .cursor/mcp.json</p>
           <CodeBlock code={JSON.stringify({ mcpServers: { 'cargo-find': { url: mcpUrl } } }, null, 2)} />
         </TabsPanel>
         <TabsPanel value="prompt" className="flex flex-col gap-2">
-          <p className="text-xs text-muted-foreground">Paste into your agent's instructions or AGENTS.md.</p>
+          <p className="text-[12px] text-ink-3">Paste into your agent's instructions or AGENTS.md.</p>
           <CodeBlock code={agentPrompt(mcpUrl)} label="Copy prompt" />
         </TabsPanel>
         <TabsPanel value="api" className="flex flex-col gap-2">
@@ -43,10 +39,10 @@ export const AgentPanel = () => {
           <CodeBlock code={`curl "${origin}/api/actions/hubspot.upsertRecords"`} />
         </TabsPanel>
         <TabsPanel value="cli" className="flex flex-col gap-2">
-          <p className="text-xs text-muted-foreground">Works offline: the index ships inside the package.</p>
+          <p className="text-[12px] text-ink-3">Works offline: the index ships inside the package.</p>
           <CodeBlock code={'npx cargo-find "sync accounts to hubspot"\nnpx cargo-find mcp'} />
         </TabsPanel>
       </Tabs>
-    </section>
+    </div>
   );
 };

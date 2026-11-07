@@ -3,7 +3,7 @@ import { cors } from 'hono/cors';
 import { describeEntry, describeResult, type EntryKind, handleMcpMessage } from '@/index';
 import { getFinder } from './finder';
 import { page } from './page';
-import { goalLimits, hasCapacity, type PlanEnvironment, readPlan, startPlan } from './planner';
+import { comparisonsToday, dailyComparisonLimit, goalLimits, hasCapacity, type PlanEnvironment, readPlan, startPlan } from './planner';
 
 type Bindings = { DATA_BASE_URL?: string };
 
@@ -48,13 +48,27 @@ app.get('/api/actions/:id', async (context) => {
     : context.json({ error: `No entry with id ${identifier}` }, 404);
 });
 
+const runsLeftToday = async (environment: PlanEnvironment): Promise<number> => {
+  if (!environment.CARGO_API_TOKEN) {
+    return 0;
+  }
+  try {
+    return Math.max(dailyComparisonLimit - (await comparisonsToday(environment)), 0);
+  } catch {
+    return 0;
+  }
+};
+
 app.get('/api/status', async (context) => {
   const finder = await getFinder(dataBaseUrl(context));
+  const liveRunsLeftToday = await runsLeftToday(planEnvironment(context));
   return context.json({
     entries: finder.catalog.entries.length,
     snapshotAt: finder.catalog.generatedAt,
     cliVersion: finder.catalog.cliVersion,
-    semantic: finder.semantic
+    semantic: finder.semantic,
+    liveRunsLeftToday,
+    liveRunsPerDay: dailyComparisonLimit
   });
 });
 
@@ -88,6 +102,12 @@ app.post('/api/plan', async (context) => {
     );
   }
   try {
+    if ((await comparisonsToday(environment)) >= dailyComparisonLimit) {
+      return context.json(
+        { error: `The live demo has used today's ${dailyComparisonLimit} runs. It resets at midnight UTC.` },
+        429
+      );
+    }
     const runs = await startPlan(environment, goal, `${new URL(context.req.url).origin}/mcp`);
     return context.json({ goal, runs });
   } catch (error) {
