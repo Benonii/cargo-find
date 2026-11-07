@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
-import { AgentPanel } from '@/components/agent-panel';
 import { BenchmarkPanel } from '@/components/benchmark-panel';
-import { Hero } from '@/components/hero';
-import { PlanPanel } from '@/components/plan-panel';
+import { TrySection } from '@/components/plan-panel';
 import { SearchPanel } from '@/components/search-panel';
 
 const repositoryUrl = 'https://github.com/Benonii/cargo-find';
@@ -23,7 +21,7 @@ const Section = ({ children, id }: { children: ReactNode; id: string }) => (
 
 export const App = () => (
   <div className="min-h-screen overflow-x-clip">
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-20 px-4 pt-6 pb-12 sm:px-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-20 px-4 pt-6 pb-12 sm:px-6">
       <nav className="flex items-center justify-between gap-3">
         <span className="flex items-center gap-2 font-mono text-[15px] font-medium text-ink">
           <span aria-hidden className="size-2.5 bg-brand" />
@@ -46,18 +44,8 @@ export const App = () => (
       </nav>
 
       <Section id="try">
-        <div className="pt-4 sm:pt-8">
-          <Hero />
-        </div>
-        <div className="mx-auto flex w-full max-w-xl flex-col gap-2">
-          <p className="text-center text-[12.5px] font-medium text-ink-2">Connect your agent</p>
-          <AgentPanel />
-        </div>
-        <div className="flex flex-col gap-3 pt-4">
-          <p className="text-center text-[12.5px] font-medium text-ink-2">
-            Or watch it work: Cargo's own AI plans your request with and without cargo-find
-          </p>
-          <PlanPanel />
+        <div className="pt-6 sm:pt-12">
+          <TrySection />
         </div>
       </Section>
 

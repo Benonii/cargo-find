@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import holdoutReport from '../../../bench/holdout-results.json';
 import tuningReport from '../../../bench/results.json';
-import { DitherBackground } from '@/components/dither-background';
 import { Frame } from '@/components/frame';
 import { Accordion, AccordionItem, AccordionPanel, AccordionTrigger } from '@/components/ui/accordion';
 import { SegmentedControl, SegmentedControlItem } from '@/components/ui/segmented-control';
@@ -117,7 +116,6 @@ export const BenchmarkPanel = () => {
 
   return (
     <div className="relative flex flex-col gap-6">
-      <DitherBackground shape="wave" className="-inset-x-6 -top-10 bottom-1/2 opacity-15" />
       <div className="relative flex flex-col items-center gap-3 text-center">
         <p className="text-6xl font-bold tracking-tight text-green tabular-nums sm:text-7xl">
           {multiple ? `${multiple}x` : '-'}
